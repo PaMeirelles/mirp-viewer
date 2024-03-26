@@ -1,0 +1,4 @@
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RADIUS = 20
+BORDER_RATIO = .9
