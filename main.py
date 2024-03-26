@@ -9,26 +9,26 @@ from Mirp import Mirp
 
 pygame.init()
 
-screen_width = WIDTH
-screen_height = HEIGHT
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("MIRP Viewer")
 
 clock = pygame.time.Clock()
 is_running = True
 
-mirp = Mirp(DISTANCE_INSTANCE_20, STARTS_INSTANCE_1)
+mirp = Mirp(DISTANCE_INSTANCE_7, STARTS_INSTANCE_1)
 
 while is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             is_running = False
+
     mirp.step()
+
     screen.fill(WHITE)
     mirp.draw(screen)
-    pygame.display.flip()
 
-    clock.tick(60)
+    pygame.display.flip()
+    clock.tick(120)
 
 pygame.quit()
 sys.exit()

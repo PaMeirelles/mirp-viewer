@@ -1,5 +1,6 @@
 import pygame
-from constants import BLACK, VESSEL_RADIUS, BORDER_RATIO, TERM_SPEED
+from constants import BLACK, VESSEL_RADIUS, BORDER_RATIO, TERM_SPEED, TRAY_WIDTH, TRAY_TRANSPARENCY, WIDTH, HEIGHT
+
 
 
 class Vessel:
@@ -16,7 +17,11 @@ class Vessel:
         pygame.draw.circle(win, BLACK, (self.x, self.y), VESSEL_RADIUS, 0)
         pygame.draw.circle(win, self.color, (self.x, self.y), VESSEL_RADIUS * BORDER_RATIO, 0)
         if self.start and self.target:
-            pygame.draw.line(win, self.color, self.start, (self.x, self.y))
+            tray_color = self.color[:3] + (TRAY_TRANSPARENCY * 128,)
+            tray_surf = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+            pygame.draw.line(win, tray_color, self.start, (self.x, self.y), TRAY_WIDTH)
+            pygame.draw.line(tray_surf, tray_color, self.target, (self.x, self.y), TRAY_WIDTH)
+            win.blit(tray_surf, (0, 0))
 
     def move(self):
         if self.target:
@@ -42,4 +47,3 @@ class Vessel:
 
         self.target = (target_x, target_y)
         self.start = (self.x, self.y)
-

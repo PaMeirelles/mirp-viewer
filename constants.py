@@ -1,6 +1,6 @@
 import numpy as np
 
-WHITE = (255, 255, 255)
+WHITE = (255, 255, 255, 0)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
@@ -19,10 +19,13 @@ PORT_RADIUS = 20
 VESSEL_RADIUS = 12
 
 BORDER_RATIO = .9
+TRAY_WIDTH = 3
+TRAY_TRANSPARENCY = .3
+
 WIDTH = 600
 HEIGHT = 600
 
-TERM_SPEED = 2
+TERM_SPEED = .4
 
 DISTANCE_INSTANCE_1 = np.array([
         [0, 4894.25, 9300.24],
