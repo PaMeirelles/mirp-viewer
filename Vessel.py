@@ -9,11 +9,14 @@ class Vessel:
         self.speed = speed
         self.direction = direction
         self.color = color
+        self.start = None
         self.target = None
 
     def draw(self, win):
         pygame.draw.circle(win, BLACK, (self.x, self.y), VESSEL_RADIUS, 0)
         pygame.draw.circle(win, self.color, (self.x, self.y), VESSEL_RADIUS * BORDER_RATIO, 0)
+        if self.start and self.target:
+            pygame.draw.line(win, self.color, self.start, (self.x, self.y))
 
     def move(self):
         if self.target:
@@ -24,9 +27,9 @@ class Vessel:
             if distance_to_target > distance_to_travel:
                 self.x += self.direction[0] * self.speed
                 self.y += self.direction[1] * self.speed
-        else:
-            self.x += self.direction[0] * self.speed
-            self.y += self.direction[1] * self.speed
+            else:
+                self.start = None
+                self.target = None
 
     def set_target(self, target_x, target_y):
         dx = target_x - self.x
@@ -38,4 +41,5 @@ class Vessel:
             self.direction = (dx / magnitude, dy / magnitude)
 
         self.target = (target_x, target_y)
+        self.start = (self.x, self.y)
 
