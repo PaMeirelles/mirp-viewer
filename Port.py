@@ -5,9 +5,10 @@ from sklearn.manifold import MDS
 
 
 class Port:
-    def __init__(self, x, y):
+    def __init__(self, x, y, index):
         self.x = x
         self.y = y
+        self.id = index
 
     def draw(self, win):
         pygame.draw.circle(win, BLACK, (self.x, self.y), PORT_RADIUS, 0)
@@ -42,7 +43,7 @@ def get_coords(distances, min_x, max_x, min_y, max_y):
 
 def get_ports(distances):
     coords = get_coords(distances, PORT_RADIUS, WIDTH - PORT_RADIUS, PORT_RADIUS, HEIGHT - PORT_RADIUS)
-    return [Port(port[0], port[1]) for port in coords]
+    return [Port(port[0], port[1], i) for (i,port) in enumerate(coords)]
 
 
 if __name__ == '__main__':

@@ -1,13 +1,13 @@
 import pygame
-from constants import BLACK, VESSEL_RADIUS, BORDER_RATIO
+from constants import BLACK, VESSEL_RADIUS, BORDER_RATIO, TERM_SPEED
 
 
 class Vessel:
-    def __init__(self, color, speed, direction, x, y):
+    def __init__(self, color, x, y):
         self.x = x
         self.y = y
-        self.speed = speed
-        self.direction = direction
+        self.speed = TERM_SPEED
+        self.direction = [0, 0]
         self.color = color
         self.start = None
         self.target = None
