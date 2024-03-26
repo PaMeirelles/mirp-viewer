@@ -2,7 +2,11 @@ import numpy as np
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-RADIUS = 20
+RED = (255, 0, 0)
+
+PORT_RADIUS = 20
+VESSEL_RADIUS = 12
+
 BORDER_RATIO = .9
 WIDTH = 600
 HEIGHT = 600

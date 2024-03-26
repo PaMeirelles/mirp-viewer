@@ -1,5 +1,5 @@
 import pygame
-from constants import WHITE, BLACK, RADIUS, BORDER_RATIO, WIDTH, HEIGHT, DISTANCE_INSTANCE_1
+from constants import WHITE, BLACK, PORT_RADIUS, BORDER_RATIO, WIDTH, HEIGHT, DISTANCE_INSTANCE_1
 import numpy as np
 from sklearn.manifold import MDS
 
@@ -10,8 +10,8 @@ class Port:
         self.y = y
 
     def draw(self, win):
-        pygame.draw.circle(win, BLACK, (self.x, self.y), RADIUS, 0)
-        pygame.draw.circle(win, WHITE, (self.x, self.y), RADIUS * BORDER_RATIO, 0)
+        pygame.draw.circle(win, BLACK, (self.x, self.y), PORT_RADIUS, 0)
+        pygame.draw.circle(win, WHITE, (self.x, self.y), PORT_RADIUS * BORDER_RATIO, 0)
 
 
 def bound_coordinates(coordinates, min_width, max_width, min_height, max_height):
@@ -41,11 +41,11 @@ def get_coords(distances, min_x, max_x, min_y, max_y):
 
 
 def get_ports(distances):
-    coords = get_coords(distances, RADIUS, WIDTH - RADIUS, RADIUS, HEIGHT - RADIUS)
+    coords = get_coords(distances, PORT_RADIUS, WIDTH - PORT_RADIUS, PORT_RADIUS, HEIGHT - PORT_RADIUS)
     return [Port(port[0], port[1]) for port in coords]
 
 
 if __name__ == '__main__':
-    get_coords(DISTANCE_INSTANCE_1, RADIUS, WIDTH - RADIUS, RADIUS, HEIGHT - RADIUS)
+    get_coords(DISTANCE_INSTANCE_1, PORT_RADIUS, WIDTH - PORT_RADIUS, PORT_RADIUS, HEIGHT - PORT_RADIUS)
 
 
